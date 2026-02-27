@@ -1,5 +1,4 @@
 # app.py — REPLICA Event (Flask Web App)
-# ---------------------------------------
 
 from flask import Flask, render_template_string
 
@@ -20,7 +19,12 @@ HTML = """
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    body{margin:0;font-family:Poppins;background:#0b0620;color:#fff}
+    body{
+      margin:0;
+      font-family:Poppins;
+      background:#0b0620;
+      color:#fff;
+    }
 
     /* HERO SECTION */
     .hero{
@@ -40,11 +44,12 @@ HTML = """
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
       font-weight:800;
+      margin:0;
     }
 
     h2{
       font-weight:300;
-      margin:10px 0 20px;
+      margin:15px 0 20px;
     }
 
     .meta{
@@ -70,9 +75,12 @@ HTML = """
       font-weight:700;
       cursor:pointer;
       color:#fff;
+      font-size:16px;
     }
 
-    section{padding:70px 8%}
+    section{
+      padding:70px 8%;
+    }
 
     .grid{
       display:grid;
@@ -116,6 +124,7 @@ HTML = """
 
     footer h4{
       color:#8a2be2;
+      margin-bottom:10px;
     }
 
     @media(max-width:600px){
@@ -126,27 +135,30 @@ HTML = """
 </head>
 <body>
 
-<!-- 🎭 HERO SECTION -->
+<!-- HERO SECTION -->
 <div class="hero">
   <div data-aos="zoom-in">
     <h1>REPLICA</h1>
     <h2>Act as the Video Plays 🎬</h2>
 
     <div class="meta">
-      <div>📅 March 13</div>
+      <div>📅 March 13, 2026</div>
       <div>📍 SNSCT, Coimbatore</div>
       <div>🎭 Department of IT Event</div>
     </div>
 
+    <!-- COUNTDOWN -->
     <div class="countdown" id="countdown"></div>
 
-    <button class="btn" onclick="window.open('https://forms.gle/sybt5ksuUCcnYJ93A','_blank')">
+    <!-- REGISTER BUTTON -->
+    <button class="btn"
+      onclick="window.open('https://forms.gle/sybt5ksuUCcnYJ93A','_blank')">
       🚀 Register Now
     </button>
   </div>
 </div>
 
-<!-- 🎬 EVENT DETAILS -->
+<!-- EVENT DETAILS -->
 <section>
   <div class="grid">
     <div class="card" data-aos="fade-up">
@@ -166,7 +178,7 @@ HTML = """
   </div>
 </section>
 
-<!-- 👥 COORDINATORS -->
+<!-- FOOTER -->
 <footer>
   <h4>STUDENT COORDINATORS</h4>
   <p>SRIJITH | POOJA</p>
@@ -180,13 +192,20 @@ AOS.init();
 
 // Countdown Timer
 const eventDate = new Date('March 13, 2026 09:00:00').getTime();
+
 setInterval(()=>{
   const now = new Date().getTime();
   const diff = eventDate - now;
-  if(diff<0) return;
+
+  if(diff < 0){
+    document.getElementById('countdown').innerHTML = "Event Started 🎉";
+    return;
+  }
+
   const d=Math.floor(diff/(1000*60*60*24));
   const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
   const m=Math.floor((diff%(1000*60*60))/(1000*60));
+
   document.getElementById('countdown').innerHTML = `
     <div class='time'><h3>${d}</h3><small>Days</small></div>
     <div class='time'><h3>${h}</h3><small>Hours</small></div>

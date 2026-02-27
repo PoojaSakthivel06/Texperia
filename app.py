@@ -140,7 +140,7 @@ HTML = """
 
     <div class="countdown" id="countdown"></div>
 
-    <button class="btn" onclick="window.open(''https://forms.gle/sybt5ksuUCcnYJ93A','_blank','_blank')">
+    <button class="btn" onclick="window.open(''https://forms.gle/sybt5ksuUCcnYJ93A','_blank')">
       🚀 Register Now
     </button>
   </div>
